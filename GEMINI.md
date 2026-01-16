@@ -26,6 +26,7 @@ This file provides context for Gemini AI when working on the Unifiedtransform pr
 - **Containerization**: Docker with Nginx, PHP 7.4, MySQL 5.7
 - **Testing**: PHPUnit
 - **Code Quality**: StyleCI, Travis CI
+- **Deployment**: Render-ready (Docker runtime)
 
 ## Project Structure
 
@@ -94,6 +95,20 @@ php artisan config:cache
 php artisan test
 ```
 
+### Render Deployment
+
+The project is optimized for deployment on Render.
+
+```bash
+# Custom deployment script
+./scripts/render-deploy.sh
+```
+
+**Deployment requirements:**
+- `storage/app/purify` directory must exist for the `purify` package.
+- `php artisan storage:link` must be run to serve uploaded assets.
+- `APP_URL` and `ASSET_URL` should be set to the production HTTPS URL to avoid mixed-content issues.
+
 ### Frontend Build
 
 ```bash
@@ -111,6 +126,14 @@ npm run prod
 
 After seeding, use these credentials to log in:
 - **Admin**: admin@ut.com / password
+
+The `DatabaseSeeder` generates a comprehensive educational dataset including:
+- 1 Admin
+- 10 Teachers (with roles assigned)
+- 10 Classes with Sections A & B
+- 40 Courses (spread across classes)
+- 40 Teacher Assignments
+- 50 Students (with parents and academic info)
 
 ## Key Concepts
 

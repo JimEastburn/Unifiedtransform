@@ -102,6 +102,13 @@ class DatabaseSeeder extends Seeder
             \App\Models\StudentParentInfo::factory()->create([
                 'student_id' => $student->id
             ]);
+
+            \App\Models\Promotion::factory()->create([
+                'student_id' => $student->id,
+                'class_id' => $class->id,
+                'section_id' => $section->id,
+                'session_id' => $session->id
+            ]);
         });
     }
 }
