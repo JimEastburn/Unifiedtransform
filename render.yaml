@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: unifiedtransform
+    runtime: docker
+    plan: starter # Starter plan recommended for Laravel to avoid sleep
+    envVars:
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: LOG_CHANNEL
+        value: errorlog
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_URL
+        fromDatabase:
+          name: unifiedtransform-db
+          property: connectionString
+
+databases:
+  - name: unifiedtransform-db
+    plan: free # Database can be on free tier
+    databaseName: unifiedtransform
+    user: unifiedtransform

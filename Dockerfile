@@ -1,60 +1,45 @@
-FROM php:7.4-fpm
+FROM php:7.4-apache
 
-# Copy composer.lock and composer.json
-COPY composer.lock composer.json /var/www/
-
-# Set working directory
-WORKDIR /var/www
-
-# Install dependencies
-# RUN apt-get update && apt-get install -y \
-#     build-essential \
-#     libpng-dev \
-#     libjpeg62-turbo-dev \
-#     libfreetype6-dev \
-#     locales \
-#     zip \
-#     jpegoptim optipng pngquant gifsicle \
-#     unzip \
-#     git \
-#     curl \
-#     libzip-dev
-
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    build-essential \
     libzip-dev \
     libpng-dev \
     libjpeg62-turbo-dev \
-    libxml2 \
-    wget
-
-# RUN pecl install xdebug-2.9.2 \
-# 	&& docker-php-ext-enable xdebug \
-#     && echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+    libpq-dev \
+    libxml2-dev \
+    unzip \
+    git \
+    && docker-php-ext-install pdo_pgsql zip exif pcntl gd
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install extensions
-RUN docker-php-ext-install pdo_mysql zip exif pcntl
-RUN docker-php-ext-install gd && docker-php-ext-enable gd
+# Enable Apache mod_rewrite
+RUN a2enmod rewrite
 
-# Install composer
+# Set Apache root to Laravel's public directory
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Copy application files
+COPY . .
+
+# Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer install --no-dev --optimize-autoloader
 
-# Add user for laravel application
-RUN groupadd -g 1000 www
-RUN useradd -u 1000 -ms /bin/bash -g www www
+# Set permissions for Laravel
+RUN chown -R www-data:www-data storage bootstrap/cache
 
-# Copy existing application directory contents
-COPY . /var/www
+# Configure Apache to listen on Render's dynamic port
+RUN sed -i 's/80/${PORT}/g' /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf
 
-# Copy existing application directory permissions
-COPY --chown=www:www . /var/www
+# Deployment script permissions
+RUN chmod +x scripts/render-deploy.sh
 
-# Change current user to www
-USER www
-
-# Expose port 9000 and start php-fpm server
-EXPOSE 9000
-CMD ["php-fpm"]
+# Start using the deployment script
+CMD ["scripts/render-deploy.sh"]
