@@ -25,6 +25,8 @@ class StudentParentInfoFactory extends Factory
             'father_name' => $this->faker->name('male'),
             'mother_name' => $this->faker->name('female'),
             'father_phone' => $this->faker->phoneNumber(),
+            'mother_phone' => $this->faker->phoneNumber(),
+            'parent_address' => $this->faker->address(),
             'student_id' => 1,
         ];
     }
