@@ -19,7 +19,7 @@ services:
       - key: LOG_CHANNEL
         value: errorlog
       - key: DB_CONNECTION
-        value: pgsql
+        value: pgsql # DB_CONNECTION is typically a fixed value, not from a database property
       - key: DB_HOST
         fromDatabase:
           name: unifiedtransform-db
