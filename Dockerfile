@@ -41,5 +41,8 @@ RUN sed -i 's/80/${PORT}/g' /etc/apache2/sites-available/000-default.conf /etc/a
 # Deployment script permissions
 RUN chmod +x scripts/render-deploy.sh
 
-# Start using the deployment script
-CMD ["scripts/render-deploy.sh"]
+# Expose port 80 (or whatever Render expects)
+EXPOSE 80
+
+# The entrypoint script will handle optimizations and starting Apache
+CMD ["/bin/bash", "-c", "./scripts/render-deploy.sh"]
