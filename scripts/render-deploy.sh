@@ -4,6 +4,14 @@ set -e
 
 echo "Starting deployment optimizations..."
 
+# Create required directories
+echo "Creating required directories..."
+mkdir -p storage/app/purify
+
+# Link storage
+echo "Linking storage..."
+php artisan storage:link --force
+
 # Clear any existing caches that might have been copied
 php artisan config:clear
 php artisan cache:clear
@@ -32,7 +40,7 @@ php artisan route:cache
 php artisan view:cache
 
 echo "Setting permissions..."
-chown -R www-data:www-data storage bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache public/storage
 
 echo "Optimizations complete. Starting Apache..."
 
