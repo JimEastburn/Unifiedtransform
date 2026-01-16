@@ -2,7 +2,7 @@ services:
   - type: web
     name: unifiedtransform
     runtime: docker
-    plan: starter # Starter plan recommended for Laravel to avoid sleep
+    plan: free # User requested free tier
     envVars:
       - key: APP_KEY
         generateValue: true
