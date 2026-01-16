@@ -1,3 +1,9 @@
+databases:
+  - name: unifiedtransform-db
+    plan: free # Database can be on free tier
+    databaseName: unifiedtransform
+    user: unifiedtransform
+
 services:
   - type: web
     name: unifiedtransform
@@ -34,9 +40,3 @@ services:
         fromDatabase:
           name: unifiedtransform-db
           property: password
-
-databases:
-  - name: unifiedtransform-db
-    plan: free # Database can be on free tier
-    databaseName: unifiedtransform
-    user: unifiedtransform

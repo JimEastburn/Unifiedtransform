@@ -8,6 +8,7 @@ php artisan config:clear
 php artisan cache:clear
 
 echo "Verifying environment..."
+printenv | grep DB_ || echo "No DB vars found"
 echo "DB_CONNECTION: ${DB_CONNECTION:-not set}"
 echo "DB_HOST is set (length): ${#DB_HOST}"
 
