@@ -174,6 +174,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('courses/assignments/create', [AssignmentController::class, 'store'])->name('assignment.store');
 
     // Update password
-    Route::get('password/edit', [UpdatePasswordController::class, 'edit'])->name('password.edit');
-    Route::post('password/edit', [UpdatePasswordController::class, 'update'])->name('password.update');
+    Route::get('password/edit', [UpdatePasswordController::class, 'edit'])->name('user.password.edit');
+    Route::post('password/edit', [UpdatePasswordController::class, 'update'])->name('user.password.update');
 });
