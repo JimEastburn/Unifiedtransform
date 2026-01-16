@@ -1,7 +1,7 @@
 databases:
   - name: unifiedtransform-db
     plan: free # Database can be on free tier
-    databaseName: unifiedtransform
+    databaseName: unifiedtransform_247d
     user: unifiedtransform
 
 services:
@@ -20,7 +20,23 @@ services:
         value: errorlog
       - key: DB_CONNECTION
         value: pgsql
-      - key: DATABASE_URL
+      - key: DB_HOST
         fromDatabase:
           name: unifiedtransform-db
-          property: internalConnectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: unifiedtransform-db
+          property: port
+      - key: DB_DATABASE
+        fromDatabase:
+          name: unifiedtransform-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: unifiedtransform-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: unifiedtransform-db
+          property: password

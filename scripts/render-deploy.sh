@@ -10,7 +10,12 @@ php artisan cache:clear
 
 echo "Verifying environment..."
 echo "DB_CONNECTION: ${DB_CONNECTION:-not set}"
-echo "DATABASE_URL is set (length): ${#DATABASE_URL}"
+echo "DB_HOST length: ${#DB_HOST}"
+echo "DB_PORT length: ${#DB_PORT}"
+echo "DB_DATABASE length: ${#DB_DATABASE}"
+echo "DB_USERNAME length: ${#DB_USERNAME}"
+echo "DB_PASSWORD length: ${#DB_PASSWORD}"
+echo "DATABASE_URL length: ${#DATABASE_URL}"
 
 # Run migrations
 # Note: --force is required in production
