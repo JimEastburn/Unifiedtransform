@@ -28,9 +28,12 @@ WORKDIR /var/www/html
 # Copy application files
 COPY . .
 
+# Debug: Check file content
+RUN ls -la composer.json && cat composer.json
+
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+RUN composer update --no-dev --optimize-autoloader --no-interaction
 
 # Set permissions for Laravel
 RUN chown -R www-data:www-data storage bootstrap/cache
