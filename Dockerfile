@@ -30,7 +30,7 @@ COPY . .
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer install --no-dev --optimize-autoloader
+RUN composer update laravel/ui --no-dev --optimize-autoloader --no-interaction
 
 # Set permissions for Laravel
 RUN chown -R www-data:www-data storage bootstrap/cache
