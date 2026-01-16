@@ -22,6 +22,9 @@ echo "DATABASE_URL length: ${#DATABASE_URL}"
 echo "Running migrations..."
 php artisan migrate --force
 
+echo "Running database seeders..."
+php artisan db:seed --force
+
 # Cache configuration, routes and views
 echo "Caching for performance..."
 php artisan config:cache
