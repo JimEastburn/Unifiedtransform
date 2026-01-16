@@ -19,84 +19,84 @@ class PermissionSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         // create permissions
-        Permission::create(['name' => 'create users']);
-        Permission::create(['name' => 'view users']);
-        Permission::create(['name' => 'edit users']);
-        Permission::create(['name' => 'delete users']);
+        Permission::findOrCreate('create users');
+        Permission::findOrCreate('view users');
+        Permission::findOrCreate('edit users');
+        Permission::findOrCreate('delete users');
 
-        Permission::create(['name' => 'promote students']);
+        Permission::findOrCreate('promote students');
 
-        Permission::create(['name' => 'create notices']);
-        Permission::create(['name' => 'view notices']);
-        Permission::create(['name' => 'edit notices']);
-        Permission::create(['name' => 'delete notices']);
+        Permission::findOrCreate('create notices');
+        Permission::findOrCreate('view notices');
+        Permission::findOrCreate('edit notices');
+        Permission::findOrCreate('delete notices');
 
-        Permission::create(['name' => 'create events']);
-        Permission::create(['name' => 'view events']);
-        Permission::create(['name' => 'edit events']);
-        Permission::create(['name' => 'delete events']);
+        Permission::findOrCreate('create events');
+        Permission::findOrCreate('view events');
+        Permission::findOrCreate('edit events');
+        Permission::findOrCreate('delete events');
 
-        Permission::create(['name' => 'create syllabi']);
-        Permission::create(['name' => 'view syllabi']);
-        Permission::create(['name' => 'edit syllabi']);
-        Permission::create(['name' => 'delete syllabi']);
+        Permission::findOrCreate('create syllabi');
+        Permission::findOrCreate('view syllabi');
+        Permission::findOrCreate('edit syllabi');
+        Permission::findOrCreate('delete syllabi');
 
-        Permission::create(['name' => 'create routines']);
-        Permission::create(['name' => 'view routines']);
-        Permission::create(['name' => 'edit routines']);
-        Permission::create(['name' => 'delete routines']);
+        Permission::findOrCreate('create routines');
+        Permission::findOrCreate('view routines');
+        Permission::findOrCreate('edit routines');
+        Permission::findOrCreate('delete routines');
 
-        Permission::create(['name' => 'create exams']);
-        Permission::create(['name' => 'view exams']);
-        Permission::create(['name' => 'delete exams']);
-        Permission::create(['name' => 'create exams rule']);
-        Permission::create(['name' => 'view exams rule']);
-        Permission::create(['name' => 'edit exams rule']);
-        Permission::create(['name' => 'delete exams rule']);
-        Permission::create(['name' => 'view exams history']);
+        Permission::findOrCreate('create exams');
+        Permission::findOrCreate('view exams');
+        Permission::findOrCreate('delete exams');
+        Permission::findOrCreate('create exams rule');
+        Permission::findOrCreate('view exams rule');
+        Permission::findOrCreate('edit exams rule');
+        Permission::findOrCreate('delete exams rule');
+        Permission::findOrCreate('view exams history');
 
-        Permission::create(['name' => 'create grading systems']);
-        Permission::create(['name' => 'view grading systems']);
-        Permission::create(['name' => 'edit grading systems']);
-        Permission::create(['name' => 'delete grading systems']);
-        Permission::create(['name' => 'create grading systems rule']);
-        Permission::create(['name' => 'view grading systems rule']);
-        Permission::create(['name' => 'edit grading systems rule']);
-        Permission::create(['name' => 'delete grading systems rule']);
+        Permission::findOrCreate('create grading systems');
+        Permission::findOrCreate('view grading systems');
+        Permission::findOrCreate('edit grading systems');
+        Permission::findOrCreate('delete grading systems');
+        Permission::findOrCreate('create grading systems rule');
+        Permission::findOrCreate('view grading systems rule');
+        Permission::findOrCreate('edit grading systems rule');
+        Permission::findOrCreate('delete grading systems rule');
 
-        Permission::create(['name' => 'take attendances']);
-        Permission::create(['name' => 'view attendances']);
-        Permission::create(['name' => 'update attendances type']);
+        Permission::findOrCreate('take attendances');
+        Permission::findOrCreate('view attendances');
+        Permission::findOrCreate('update attendances type');
 
-        Permission::create(['name' => 'submit assignments']);
-        Permission::create(['name' => 'create assignments']);
-        Permission::create(['name' => 'view assignments']);
+        Permission::findOrCreate('submit assignments');
+        Permission::findOrCreate('create assignments');
+        Permission::findOrCreate('view assignments');
 
-        Permission::create(['name' => 'save marks']);
-        Permission::create(['name' => 'view marks']);
+        Permission::findOrCreate('save marks');
+        Permission::findOrCreate('view marks');
 
-        Permission::create(['name' => 'create school sessions']);
+        Permission::findOrCreate('create school sessions');
 
-        Permission::create(['name' => 'create semesters']);
-        Permission::create(['name' => 'view semesters']);
-        Permission::create(['name' => 'edit semesters']);
-        Permission::create(['name' => 'assign teachers']);
-        Permission::create(['name' => 'create courses']);
-        Permission::create(['name' => 'view courses']);
-        Permission::create(['name' => 'edit courses']);
+        Permission::findOrCreate('create semesters');
+        Permission::findOrCreate('view semesters');
+        Permission::findOrCreate('edit semesters');
+        Permission::findOrCreate('assign teachers');
+        Permission::findOrCreate('create courses');
+        Permission::findOrCreate('view courses');
+        Permission::findOrCreate('edit courses');
 
-        Permission::create(['name' => 'view academic settings']);
-        Permission::create(['name' => 'update marks submission window']);
-        Permission::create(['name' => 'update browse by session']);
+        Permission::findOrCreate('view academic settings');
+        Permission::findOrCreate('update marks submission window');
+        Permission::findOrCreate('update browse by session');
 
-        Permission::create(['name' => 'create classes']);
-        Permission::create(['name' => 'view classes']);
-        Permission::create(['name' => 'edit classes']);
+        Permission::findOrCreate('create classes');
+        Permission::findOrCreate('view classes');
+        Permission::findOrCreate('edit classes');
         // Permission::create(['name' => 'delete classes']);
 
-        Permission::create(['name' => 'create sections']);
-        Permission::create(['name' => 'view sections']);
-        Permission::create(['name' => 'edit sections']);
+        Permission::findOrCreate('create sections');
+        Permission::findOrCreate('view sections');
+        Permission::findOrCreate('edit sections');
         // Permission::create(['name' => 'delete sections']);
 
         $user = \App\Models\User::updateOrCreate(
