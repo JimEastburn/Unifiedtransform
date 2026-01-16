@@ -31,6 +31,9 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
+echo "Setting permissions..."
+chown -R www-data:www-data storage bootstrap/cache
+
 echo "Optimizations complete. Starting Apache..."
 
 # Start Apache in foreground
