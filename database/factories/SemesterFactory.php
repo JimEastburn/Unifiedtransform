@@ -22,7 +22,10 @@ class SemesterFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'semester_name' => $this->faker->randomElement(['First Semester', 'Second Semester', 'Summer Semester']),
+            'start_date' => $this->faker->date(),
+            'end_date' => $this->faker->date(),
+            'session_id' => 1,
         ];
     }
 }

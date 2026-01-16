@@ -22,7 +22,7 @@ class SchoolSessionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'session_name' => '2023-2024',
         ];
     }
 }

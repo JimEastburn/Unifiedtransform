@@ -22,7 +22,11 @@ class CourseFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'course_name' => $this->faker->randomElement(['Mathematics', 'English', 'Science', 'History', 'Physics', 'Chemistry', 'Biology']),
+            'course_type' => $this->faker->randomElement(['theory', 'practical']),
+            'class_id' => 1,
+            'semester_id' => 1,
+            'session_id' => 1,
         ];
     }
 }

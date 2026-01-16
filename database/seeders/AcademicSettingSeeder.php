@@ -14,6 +14,8 @@ class AcademicSettingSeeder extends Seeder
      */
     public function run()
     {
-        AcademicSetting::factory()->count(1)->create();
+        if (AcademicSetting::count() == 0) {
+            AcademicSetting::factory()->count(1)->create();
+        }
     }
 }

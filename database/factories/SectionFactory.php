@@ -22,7 +22,10 @@ class SectionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'section_name' => $this->faker->randomElement(['Section A', 'Section B', 'Section C']),
+            'room_no' => $this->faker->numberBetween(101, 505),
+            'class_id' => 1,
+            'session_id' => 1,
         ];
     }
 }

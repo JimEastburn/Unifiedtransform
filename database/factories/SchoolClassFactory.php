@@ -22,7 +22,8 @@ class SchoolClassFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'class_name' => 'Class ' . $this->faker->unique()->numberBetween(1, 12),
+            'session_id' => 1,
         ];
     }
 }

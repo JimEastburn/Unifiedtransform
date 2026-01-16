@@ -22,7 +22,12 @@ class AssignedTeacherFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'teacher_id' => 1,
+            'semester_id' => 1,
+            'class_id' => 1,
+            'section_id' => 1,
+            'course_id' => 1,
+            'session_id' => 1,
         ];
     }
 }

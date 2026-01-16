@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 
 class PermissionSeeder extends Seeder
@@ -17,6 +18,11 @@ class PermissionSeeder extends Seeder
     {
         // Reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
+
+        // create roles
+        Role::findOrCreate('admin');
+        Role::findOrCreate('teacher');
+        Role::findOrCreate('student');
 
         // create permissions
         Permission::findOrCreate('create users');
